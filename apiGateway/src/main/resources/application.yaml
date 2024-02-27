@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: notes
+          uri: http://localhost:8088/
+          predicates:
+            - Path=/notes/**
+        - id: tasks
+          uri: http://localhost:8089/
+          predicates:
+            - Path=/tasks/**
